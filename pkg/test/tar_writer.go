@@ -73,11 +73,11 @@ func (tw *TarWriter) Add(name string, obj interface{}) *TarWriter {
 	var data []byte
 	var err error
 
-	switch obj.(type) {
+	switch obj := obj.(type) {
 	case runtime.Object:
-		data, err = encode.Encode(obj.(runtime.Object), "json")
+		data, err = encode.Encode(obj, "json")
 	case []byte:
-		data = obj.([]byte)
+		data = obj
 	default:
 		data, err = json.Marshal(obj)
 	}

@@ -146,71 +146,71 @@ func printTable(cmd *cobra.Command, obj runtime.Object) (bool, error) {
 	// 1. generate table
 	var table *metav1.Table
 
-	switch obj.(type) {
+	switch obj := obj.(type) {
 	case *velerov1api.Backup:
 		table = &metav1.Table{
 			ColumnDefinitions: backupColumns,
-			Rows:              printBackup(obj.(*velerov1api.Backup)),
+			Rows:              printBackup(obj),
 		}
 	case *velerov1api.BackupList:
 		table = &metav1.Table{
 			ColumnDefinitions: backupColumns,
-			Rows:              printBackupList(obj.(*velerov1api.BackupList)),
+			Rows:              printBackupList(obj),
 		}
 	case *velerov1api.Restore:
 		table = &metav1.Table{
 			ColumnDefinitions: restoreColumns,
-			Rows:              printRestore(obj.(*velerov1api.Restore)),
+			Rows:              printRestore(obj),
 		}
 	case *velerov1api.RestoreList:
 		table = &metav1.Table{
 			ColumnDefinitions: restoreColumns,
-			Rows:              printRestoreList(obj.(*velerov1api.RestoreList)),
+			Rows:              printRestoreList(obj),
 		}
 	case *velerov1api.Schedule:
 		table = &metav1.Table{
 			ColumnDefinitions: scheduleColumns,
-			Rows:              printSchedule(obj.(*velerov1api.Schedule)),
+			Rows:              printSchedule(obj),
 		}
 	case *velerov1api.ScheduleList:
 		table = &metav1.Table{
 			ColumnDefinitions: scheduleColumns,
-			Rows:              printScheduleList(obj.(*velerov1api.ScheduleList)),
+			Rows:              printScheduleList(obj),
 		}
 	case *velerov1api.ResticRepository:
 		table = &metav1.Table{
 			ColumnDefinitions: resticRepoColumns,
-			Rows:              printResticRepo(obj.(*velerov1api.ResticRepository)),
+			Rows:              printResticRepo(obj),
 		}
 	case *velerov1api.ResticRepositoryList:
 		table = &metav1.Table{
 			ColumnDefinitions: resticRepoColumns,
-			Rows:              printResticRepoList(obj.(*velerov1api.ResticRepositoryList)),
+			Rows:              printResticRepoList(obj),
 		}
 	case *velerov1api.BackupStorageLocation:
 		table = &metav1.Table{
 			ColumnDefinitions: backupStorageLocationColumns,
-			Rows:              printBackupStorageLocation(obj.(*velerov1api.BackupStorageLocation)),
+			Rows:              printBackupStorageLocation(obj),
 		}
 	case *velerov1api.BackupStorageLocationList:
 		table = &metav1.Table{
 			ColumnDefinitions: backupStorageLocationColumns,
-			Rows:              printBackupStorageLocationList(obj.(*velerov1api.BackupStorageLocationList)),
+			Rows:              printBackupStorageLocationList(obj),
 		}
 	case *velerov1api.VolumeSnapshotLocation:
 		table = &metav1.Table{
 			ColumnDefinitions: volumeSnapshotLocationColumns,
-			Rows:              printVolumeSnapshotLocation(obj.(*velerov1api.VolumeSnapshotLocation)),
+			Rows:              printVolumeSnapshotLocation(obj),
 		}
 	case *velerov1api.VolumeSnapshotLocationList:
 		table = &metav1.Table{
 			ColumnDefinitions: volumeSnapshotLocationColumns,
-			Rows:              printVolumeSnapshotLocationList(obj.(*velerov1api.VolumeSnapshotLocationList)),
+			Rows:              printVolumeSnapshotLocationList(obj),
 		}
 	case *velerov1api.ServerStatusRequest:
 		table = &metav1.Table{
 			ColumnDefinitions: pluginColumns,
-			Rows:              printPluginList(obj.(*velerov1api.ServerStatusRequest)),
+			Rows:              printPluginList(obj),
 		}
 	default:
 		return false, errors.Errorf("type %T is not supported", obj)
